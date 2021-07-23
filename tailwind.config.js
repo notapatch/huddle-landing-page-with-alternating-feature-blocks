@@ -20,6 +20,11 @@ module.exports = {
       heading: ['Poppins', ...defaultTheme.fontFamily.sans],
       body: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
     },
+    screens: {
+      'sm': '600px',
+      'md': '900px',
+      'xl': '1440px',
+    },
     extend: {},
   },
   variants: {
