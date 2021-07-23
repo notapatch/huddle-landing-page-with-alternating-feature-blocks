@@ -1,0 +1,12 @@
+{
+  "name": "huddle-landing-page-with-alternating-feature-blocks",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.4.3"
+  }
+}
