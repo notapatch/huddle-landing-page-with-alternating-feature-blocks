@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
@@ -13,6 +15,10 @@ module.exports = {
       gray: {
         100: 'var(--color-gray-100)',
       },
+    },
+    fontFamily: {
+      heading: ['Poppins', ...defaultTheme.fontFamily.sans],
+      body: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
     },
     extend: {},
   },
