@@ -4,19 +4,23 @@ This is a solution to the [Huddle landing page with alternating feature blocks c
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+- [Frontend Mentor - Huddle landing page with alternating feature blocks solution](#frontend-mentor---huddle-landing-page-with-alternating-feature-blocks-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+      - [Desktop](#desktop)
+      - [Mobile](#mobile)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Transforming a box out of the flow.](#transforming-a-box-out-of-the-flow)
+    - [Placing two items next to each other with a small space between them.](#placing-two-items-next-to-each-other-with-a-small-space-between-them)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+  - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -29,22 +33,20 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+#### Desktop
+![](./screenshots/final-desktop.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+#### Mobile
+![](./screenshots/final-mobile.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://github.com/notapatch/huddle-landing-page-with-alternating-feature-blocks)
+- [Live Site URL](https://blissful-thompson-73ee11.netlify.app/)
 
 ## My process
+
+I was meant to look at the page and work out which boxes were needed. I missed a shadow around two boxes that meant there needed to be an extra box. Other areas of confusion was the hero section and footer having no margin and the rest needing it.
 
 ### Built with
 
@@ -53,59 +55,68 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Tailwindcss](https://tailwindcss.com/) - For styles
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+frontendmentor supplied SVGs without viewbox. What this means is that you can't scale them anymore.
+A weird situation for a responsive website.
 
-To see how you can add code snippets, see below:
+I wanted the order of an flex item to change when changing from mobile to sm(all). I achieved this with Tailwindcss media query with `order-first`.
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+<h1 class="sm:order-first">Some HTML code I'm proud of</h1>
+
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+### Transforming a box out of the flow.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+When you want a box not to appear in the flow.
+
+![](screenshots/transforming%20out%20of%20flow.png)
+
+```html
+<div class="text-center pt-44">
+  <div class="transform translate-y-1/3 ">
+    <!-- Content -->
+  </div>
+</div>
+```
+
+### Placing two items next to each other with a small space between them.
+
+A common issue is trying to get two inline elements with a constant spacing between them.
+An example is shown in the footer. [Tailwindcss has a `space-x` utility class](https://tailwindcss.com/docs/space#class-reference) that does just
+that. It's put in the parent element, `li` in this case and the two child elements will have a space added between them. If there were 3 elements there would be two spaces added.
+
+![](screenshots/spacing-spans.png)
+
+```html
+<ul>
+  <li class="items-start justify-start space-x-4">
+    <span class="flex-none">
+      <svg  class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">..</svg>
+    </span>
+    <span>
+      +1-543-123-4567
+    </span>
+  </li>
+</ul> 
+```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Controlling the footer responsively. I used Tailwind's implementation of CSS grid. Along with row-start, row-span (and col-start, col-span) to move box items depending on the breakpoints. It worked but it is something that repeated attempts should make smoother.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
+- [Stackoverflow discussion on how to handle SVGs without viewbox and what this means.](https://stackoverflow.com/questions/15335926/how-to-use-the-svg-viewbox-attribute/48031419#48031419) - I was having problems scaling the SVG and I _thought_ it was something to do with missing the viewbox but this SO thread discussed whys.
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Frontend Mentor - [@notapatch](https://www.frontendmentor.io/profile/notapatch)
+- Twitter - [@notapatch](https://www.twitter.com/yourusername)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+[TailwindUI (mainly paid, sorry) has a number of solutions to common formatting problems. In this case they had a number of examples of images with text near them which you can dissect.](https://tailwindui.com/)
